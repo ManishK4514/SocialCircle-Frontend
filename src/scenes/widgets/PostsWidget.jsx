@@ -40,7 +40,7 @@ const PostsWidget = ({ userId, loggedUserId, userProfilePicture, isProfile = fal
 
   return (
     <>
-      {posts.map(
+      {Array.isArray(posts) && posts.map(
         ({
           _id,
           userId,

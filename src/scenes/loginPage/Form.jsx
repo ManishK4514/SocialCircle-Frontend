@@ -143,9 +143,22 @@ const Form = () => {
         formData.append("password", passwordInputValue);
         formData.append("location", locationInputValue);
         formData.append("occupation", occupationInputValue);
-        formData.append("picture", picture); // Change to "picture" here
 
-        console.log(formData);
+        if (picture) {
+            formData.append("image", picture);
+            const imgbbKey = process.env.REACT_APP_IMGBB_API_KEY;
+            const imgbbResponse = await fetch(
+                `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
+                {
+                    method: "POST",
+                    body: formData,
+                }
+            );
+            const imgbbData = await imgbbResponse.json();
+            const imageUrl = imgbbData.data.url;
+
+            formData.append("picturePath", imageUrl);
+        }
 
         await axios({
             method: "POST",
@@ -157,7 +170,7 @@ const Form = () => {
         })
             .then((res) => {
                 console.log("New User Created...");
-                if(res) {
+                if (res) {
                     setPageType("login");
                 }
             })

@@ -27,6 +27,7 @@
     display: grid;
     grid-template-columns: 1fr auto;
     padding-left: 12px;
+    padding-top: 5px;
     gap: 5px;
     background-color: aliceblue;
     border-radius: 0px 10px 0px 0px;
@@ -82,9 +83,15 @@
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 930px) {
     .comment-para-details {
         margin-top: -13px;
+    }
+}
+
+@media (max-width: 870px) {
+    .comment-para-details {
+        margin-top: -11px;
     }
 }
 
@@ -94,9 +101,21 @@
     }
 }
 
+@media (max-width: 810px) {
+    .comment-para-details {
+        margin-top: -7px;
+    }
+}
+
 @media (max-width: 770px) {
     .comment-para-details {
         margin-top: -7px;
+    }
+}
+
+@media (max-width: 740px) {
+    .comment-para-details {
+        margin-top: -5px;
     }
 }
 
@@ -106,13 +125,13 @@
     }
 }
 
-@media (max-width: 630px) {
+@media (max-width: 670px) {
     .comment-para-details {
         margin-top: -2px;
     }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 640px) {
     .comment-para-details {
         margin-top: 0px;
     }

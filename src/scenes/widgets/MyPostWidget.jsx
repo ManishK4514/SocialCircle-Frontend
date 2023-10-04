@@ -11,8 +11,8 @@ import { BiImageAlt } from "react-icons/bi"
 import { MdOutlineGifBox } from "react-icons/md"
 import { MdAttachFile } from "react-icons/md"
 import { BsMicFill } from "react-icons/bs"
-import {MdOutlineModeEditOutline} from "react-icons/md"
-import {MdDeleteOutline} from "react-icons/md"
+import { MdOutlineModeEditOutline } from "react-icons/md"
+import { MdDeleteOutline } from "react-icons/md"
 import "./MyPostWidget.css";
 
 const MyPostWidget = ({ picturePath }) => {
@@ -34,8 +34,19 @@ const MyPostWidget = ({ picturePath }) => {
     formData.append("userId", _id);
     formData.append("description", post);
     if (image) {
-      formData.append("picture", image);
-      formData.append("picturePath", image.name);
+      formData.append("image", image);
+      const imgbbKey = process.env.REACT_APP_IMGBB_API_KEY;
+      const imgbbResponse = await fetch(
+        `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const imgbbData = await imgbbResponse.json();
+      const imageUrl = imgbbData.data.url;
+      
+      formData.append("picturePath", imageUrl);
     }
 
     const response = await fetch(`${baseUrl}/posts`, {
@@ -55,7 +66,7 @@ const MyPostWidget = ({ picturePath }) => {
         <UserImage image={picturePath} />
         <div
           className="Discription-div"
-          style={{backgroundColor: palette.neutral.light}}
+          style={{ backgroundColor: palette.neutral.light }}
         >
           <input
             type="text"

@@ -87,6 +87,10 @@
     font-weight: 500;
 }
 
+.stat-value.dark-mode {
+    color: #e0e0e0;
+}
+
 .main-color {
     color: var(--main);
 }

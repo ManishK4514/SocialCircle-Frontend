@@ -90,11 +90,11 @@ const UserWidget = ({ userId, picturePath }) => {
       <div className="profile-stats-container">
         <div className="stat-group">
           <div className="stat-label">Who's viewed your profile</div>
-          <div className="stat-value main-color">{viewedProfile}</div>
+          <div className={`stat-value main-color ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} >{viewedProfile}</div>
         </div>
         <div className="stat-group">
           <div className="stat-label">Impressions of your post</div>
-          <div className="stat-value main-color">{impressions}</div>
+          <div className={`stat-value main-color ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} >{impressions}</div>
         </div>
       </div>
 
@@ -112,7 +112,7 @@ const UserWidget = ({ userId, picturePath }) => {
               <div style={{ color: medium }}>Social Network</div>
             </div>
           </FlexBetween>
-          <MdOutlineModeEditOutline className="user-dashboard-icon" />
+          <MdOutlineModeEditOutline className={`user-dashboard-icon ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} />
         </FlexBetween>
 
         <FlexBetween gap="1rem">
@@ -123,7 +123,7 @@ const UserWidget = ({ userId, picturePath }) => {
               <div style={{ color: medium }}>Network Platform</div>
             </div>
           </FlexBetween>
-          <MdOutlineModeEditOutline className="user-dashboard-icon" />
+          <MdOutlineModeEditOutline className={`user-dashboard-icon ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} />
         </FlexBetween>
       </div>
     </WidgetWrapper>
