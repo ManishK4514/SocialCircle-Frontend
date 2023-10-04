@@ -7,7 +7,7 @@ const PostsWidget = ({ userId, loggedUserId, userProfilePicture, isProfile = fal
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts);
   const token = useSelector((state) => state.token);
-  const baseUrl = "https://socialcircle-backend.onrender.com";
+  const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
   const getPosts = async () => {
     const response = await fetch(`${baseUrl}/posts`, {

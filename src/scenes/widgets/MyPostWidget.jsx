@@ -27,7 +27,7 @@ const MyPostWidget = ({ picturePath }) => {
 
   const mediumMain = palette.neutral.mediumMain;
   const medium = palette.neutral.medium;
-  const baseUrl = "https://socialcircle-backend.onrender.com";
+  const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
   const handlePost = async () => {
     const formData = new FormData();

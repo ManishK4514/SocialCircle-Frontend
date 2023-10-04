@@ -15,7 +15,7 @@ const ProfilePage = () => {
   const token = useSelector((state) => state.token);
   const { _id, picturePath } = useSelector((state) => state.user);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-  const baseUrl = "https://socialcircle-backend.onrender.com";
+  const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
   const getUser = async () => {
     const response = await fetch(`${baseUrl}/users/${userId}`, {

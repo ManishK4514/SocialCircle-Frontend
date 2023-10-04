@@ -8,7 +8,7 @@ const AdvertWidget = () => {
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;
 
-  const baseUrl = "https://socialcircle-backend.onrender.com";
+  const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
   return (
     <WidgetWrapper>
@@ -22,7 +22,7 @@ const AdvertWidget = () => {
         width="100%"
         height="auto"
         alt="advert"
-        src="https://socialcircle-backend.onrender.com/assets/info4.jpeg"
+        src={`${baseUrl}/assets/info4.jpeg`}
         style={{ borderRadius: "0.75rem", margin: "0.75rem 0" }}
       />
       <FlexBetween>

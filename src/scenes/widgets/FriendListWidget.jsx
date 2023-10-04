@@ -12,7 +12,7 @@ const FriendListWidget = ({ userId }) => {
   const friends = useSelector((state) => state.user.friends);
   const { palette } = useTheme();
   const isDarkTheme = palette.mode === 'dark';
-  const baseUrl = "https://socialcircle-backend.onrender.com";
+  const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
   const getFriends = async () => {
     const response = await fetch(

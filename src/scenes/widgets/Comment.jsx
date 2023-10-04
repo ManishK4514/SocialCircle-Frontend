@@ -8,13 +8,13 @@ const Comment = ({ name, commentUserId, picturePath, location, comment, likes, u
     const navigate = useNavigate();
     const { palette } = useTheme();
     const isDarkTheme = palette.mode === 'dark';
-    const baseUrl = "https://socialcircle-backend.onrender.com";
+    const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
     return (
         <div className="comment-container">
             <div className="comment-user-div">
                 <div className="comment-user-image">
-                    <img className="profile-picture" src={`${baseUrl}/assets/${picturePath}`} alt="pic" srcset="" />
+                    <img className="profile-picture" src={picturePath} alt="pic" srcset="" />
                 </div>
                 <div
                     className={`comment-user-details ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}

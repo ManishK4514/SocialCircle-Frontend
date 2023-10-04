@@ -13,6 +13,7 @@ const MyComment = ({ location, postId, picturePath, commentBody, setCommentBody,
     const token = useSelector((state) => state.token);
     const { palette } = useTheme();
     const isDarkTheme = palette.mode === 'dark';
+    const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
     const handleCreateComment = async () => {
         try {
@@ -27,7 +28,7 @@ const MyComment = ({ location, postId, picturePath, commentBody, setCommentBody,
                 description: commentBody,
             };
 
-            await axios.post("https://socialcircle-backend.onrender.com/posts/:postId/create", data, {
+            await axios.post(`${baseUrl}/posts/:postId/create`, data, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                 },

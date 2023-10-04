@@ -39,7 +39,7 @@ const PostWidget = ({
   const [commentId, setCommentId] = useState("");
   const { palette } = useTheme();
   const isDarkTheme = palette.mode === 'dark';
-  const baseUrl = "https://socialcircle-backend.onrender.com";
+  const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
   const primary = palette.primary.main
 
@@ -87,7 +87,7 @@ const PostWidget = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`${baseUrl}/assets/${picturePath}`}
+          src={picturePath}
         />
       )}
       <FlexBetween mt="0.25rem">

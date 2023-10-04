@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://socialcircle-backend.onrender.com";
+const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
 const getAllComment = (setComment, token, postId) => {
     axios

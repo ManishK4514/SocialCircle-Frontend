@@ -43,7 +43,7 @@ const Navbar = () => {
 
   const fullName = `${user.firstName} ${user.lastName}`;
   const [searchQuery, setSearchQuery] = useState('');
-  const baseUrl = "https://socialcircle-backend.onrender.com";
+  const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
   const handleSearch = async () => {
     if (!searchQuery) {

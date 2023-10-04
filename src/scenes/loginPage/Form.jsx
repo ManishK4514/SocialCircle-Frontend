@@ -17,7 +17,7 @@ const Form = () => {
 
     const navigate = useNavigate();
 
-    const baseUrl = "https://socialcircle-backend.onrender.com";
+    const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
     const [pageType, setPageType] = useState("login");
     const dispatch = useDispatch();
@@ -41,10 +41,6 @@ const Form = () => {
     const [passwordInputValue, setPasswordInputValue] = useState("");
 
     const [picture, setPicture] = useState(null);
-
-    const handleDrop = (acceptedFiles) => {
-        setPicture(acceptedFiles[0]);
-    };
 
     const handleFirstNameFocus = () => {
         setFirstNameIsFocused(true);

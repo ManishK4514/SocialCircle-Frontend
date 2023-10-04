@@ -18,7 +18,7 @@ const UserWidget = ({ userId, picturePath }) => {
   const token = useSelector((state) => state.token);
   const medium = palette.neutral.medium;
   const isDarkTheme = palette.mode === 'dark';
-  const baseUrl = "https://socialcircle-backend.onrender.com";
+  const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
   const getUser = async () => {
     const response = await fetch(`${baseUrl}/users/${userId}`, {
