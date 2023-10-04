@@ -201,6 +201,8 @@ const Form = () => {
             alert("Authentication failed!");
             setEmailInputValue("");
             setPasswordInputValue("");
+            setEmailIsFocused(false);
+            setPasswordIsFocused(false);
         })
     };
 
