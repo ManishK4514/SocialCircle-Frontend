@@ -12,6 +12,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
 import { getAllComment, handleDelete } from "utlis/HandleCommentApi";
+import { setPosts } from "state";
+import { MdDelete } from "react-icons/md"
 import MyComment from "./MyComment"
 import Comment from "./Comment"
 import "./PostWidget.css"
@@ -56,17 +58,30 @@ const PostWidget = ({
     dispatch(setPost({ post: updatedPost }));
   };
 
+  const handleDeletePost = async () => {
+    const response = await fetch(`${baseUrl}/posts/${postId}/delete`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ postId: postId }),
+    });
+    const posts = await response.json();
+    dispatch(setPosts({ posts }));
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       getAllComment(setComment, token, postId);
-    }, 2000);
+    }, 500);
 
     return () => clearInterval(interval);
   }, []);
 
   const updateMode = (_id, commentBody) => {
     setIsUpdating(true);
-    setCommentBody(commentBody);    
+    setCommentBody(commentBody);
     setCommentId(_id);
   }
 
@@ -111,18 +126,25 @@ const PostWidget = ({
           </FlexBetween>
         </FlexBetween>
 
-        <button className={`user-interaction-btn ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} >
-          <ShareOutlined />
-        </button>
+        <div className="post-icon-btn-div">
+          {loggedInUserId === postUserId && (
+            <button className={`icon-btn-post ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} onClick={handleDeletePost} >
+              <MdDelete className={`icon-svg ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} />
+            </button>
+          )}
+          <button className={`icon-btn-post ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} >
+            <ShareOutlined className={`icon-svg ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} />
+          </button>
+        </div>
       </FlexBetween>
 
       {isComments && (
         <div className="comment-div">
           <div className="user-comment-input">
-            <MyComment 
-              location={location} 
-              picturePath={userProfilePicture} 
-              postId={postId}  
+            <MyComment
+              location={location}
+              picturePath={userProfilePicture}
+              postId={postId}
               commentBody={commentBody}
               setCommentBody={setCommentBody}
               isUpdating={isUpdating}
