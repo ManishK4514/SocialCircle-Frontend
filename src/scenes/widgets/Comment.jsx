@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import "./Comment.css";
@@ -10,7 +10,6 @@ const Comment = ({ name, commentUserId, picturePath, location, comment, likes, u
     const { palette } = useTheme();
     const isDarkTheme = palette.mode === 'dark';
     const loggedInUserId = useSelector((state) => state.user._id);
-    const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
     return (
         <div className="comment-container">

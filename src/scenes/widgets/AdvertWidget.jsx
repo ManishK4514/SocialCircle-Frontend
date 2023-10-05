@@ -8,8 +8,6 @@ const AdvertWidget = () => {
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;
 
-  const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
-
   return (
     <WidgetWrapper>
       <FlexBetween>
