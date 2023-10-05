@@ -22,7 +22,7 @@ const AdvertWidget = () => {
         width="100%"
         height="auto"
         alt="advert"
-        src={`${baseUrl}/assets/info4.jpeg`}
+        src="https://i.ibb.co/s38p4Rv/Screenshot-10.png"
         style={{ borderRadius: "0.75rem", margin: "0.75rem 0" }}
       />
       <FlexBetween>

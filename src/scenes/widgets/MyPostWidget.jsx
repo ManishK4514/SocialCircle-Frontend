@@ -23,13 +23,16 @@ const MyPostWidget = ({ picturePath }) => {
   const { palette } = useTheme();
   const { _id } = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
-  const isNonMobileScreens = window.innerWidth >= 1000; // Use plain JavaScript for media query
+  const isNonMobileScreens = window.innerWidth >= 1000;
 
   const mediumMain = palette.neutral.mediumMain;
   const medium = palette.neutral.medium;
   const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
   const handlePost = async () => {
+    const postButton = document.querySelector('.post-btn');
+    postButton.classList.add('disabled');
+
     const formData = new FormData();
     formData.append("userId", _id);
     formData.append("description", post);
@@ -45,7 +48,7 @@ const MyPostWidget = ({ picturePath }) => {
       );
       const imgbbData = await imgbbResponse.json();
       const imageUrl = imgbbData.data.url;
-      
+
       formData.append("picturePath", imageUrl);
     }
 
@@ -58,6 +61,7 @@ const MyPostWidget = ({ picturePath }) => {
     dispatch(setPosts({ posts }));
     setImage(null);
     setPost("");
+    postButton.classList.remove('disabled');
   };
 
   return (
