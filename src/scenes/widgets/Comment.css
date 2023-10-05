@@ -16,6 +16,7 @@
 }
 
 .profile-picture {
+    max-width: 28px;
     width: 100%;
     height: auto;
     border-radius: 50%;
@@ -79,60 +80,9 @@
 
 @media (max-width: 1000px) {
     .comment-para-details {
-        margin-top: -15px;
-    }
-}
-
-@media (max-width: 930px) {
-    .comment-para-details {
-        margin-top: -13px;
-    }
-}
-
-@media (max-width: 870px) {
-    .comment-para-details {
-        margin-top: -11px;
-    }
-}
-
-@media (max-width: 830px) {
-    .comment-para-details {
-        margin-top: -10px;
-    }
-}
-
-@media (max-width: 810px) {
-    .comment-para-details {
-        margin-top: -7px;
-    }
-}
-
-@media (max-width: 770px) {
-    .comment-para-details {
-        margin-top: -7px;
-    }
-}
-
-@media (max-width: 740px) {
-    .comment-para-details {
-        margin-top: -5px;
-    }
-}
-
-@media (max-width: 700px) {
-    .comment-para-details {
-        margin-top: -4px;
-    }
-}
-
-@media (max-width: 670px) {
-    .comment-para-details {
-        margin-top: -2px;
-    }
-}
-
-@media (max-width: 640px) {
-    .comment-para-details {
         margin-top: 0px;
+    }
+    .profile-picture {
+        max-width: 28px;
     }
 }

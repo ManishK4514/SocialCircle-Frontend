@@ -6,7 +6,7 @@ const UserImage = ({ image }) => {
     <div className="img-container">
       <img
         className="profile-pic"
-        alt="user"
+        alt="profile-pic"
         src={image}
       />
     </div>

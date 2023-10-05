@@ -30,12 +30,7 @@ const UserWidget = ({ userId, picturePath }) => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      getUser();
-    }, 2000
-    );
-
-    return () => clearInterval(interval);
+    getUser();
   }, []);
 
   if (!user) {

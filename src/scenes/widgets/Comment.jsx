@@ -1,20 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import "./Comment.css";
 
-const Comment = ({ name, commentUserId, picturePath, location, comment, likes, updateMode, handleDelete}) => {
+const Comment = ({ name, commentUserId, picturePath, location, comment, likes, updateMode, handleDelete }) => {
     const navigate = useNavigate();
     const { palette } = useTheme();
     const isDarkTheme = palette.mode === 'dark';
+    const loggedInUserId = useSelector((state) => state.user._id);
     const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
     return (
         <div className="comment-container">
             <div className="comment-user-div">
                 <div className="comment-user-image">
-                    <img className="profile-picture" src={picturePath} alt="pic" srcset="" />
+                    <img className="profile-picture" src={picturePath} alt="Image" srcset="" />
                 </div>
                 <div
                     className={`comment-user-details ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}
@@ -34,17 +36,16 @@ const Comment = ({ name, commentUserId, picturePath, location, comment, likes, u
                         </div>
                     </div>
 
-                    <div className="comment-update-icons">
-                        <button className={`user-interaction-btn ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}>
-                            <BiEdit onClick={updateMode} ></BiEdit>
-                        </button>
-                        <button className={`user-interaction-btn ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}>
-                            <AiFillDelete
-                                onClick={handleDelete}
-                            ></AiFillDelete>
-                        </button>
-
-                    </div>
+                    {loggedInUserId === commentUserId && (
+                        <div className="comment-update-icons">
+                            <button className={`user-interaction-btn ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}>
+                                <BiEdit onClick={updateMode} />
+                            </button>
+                            <button className={`user-interaction-btn ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}>
+                                <AiFillDelete onClick={handleDelete} />
+                            </button>
+                        </div>
+                    )}
 
                 </div>
             </div>
