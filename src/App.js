@@ -3,6 +3,7 @@ import HomePage from "scenes/homePage";
 import LoginPage from "scenes/loginPage";
 import ProfilePage from "scenes/profilePage";
 import SearchPage from "scenes/SearchPage";
+import NotificationPage from "scenes/notificationPage"
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -33,6 +34,10 @@ function App() {
             <Route
               path="/search/:searchQuery"
               element={isAuth ? <SearchPage /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/notification"
+              element={isAuth ? <NotificationPage /> : <Navigate to="/" />}
             />
           </Routes>
         </ThemeProvider>

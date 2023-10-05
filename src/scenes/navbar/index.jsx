@@ -11,7 +11,6 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import {
-  Menu,
   Close,
 } from "@mui/icons-material";
 import axios from "axios";
@@ -115,7 +114,7 @@ const Navbar = () => {
             <div>
               <BiMessageDetail className="nav-icon" />
             </div>
-            <div>
+            <div onClick={() => navigate("/notification")}>
               <IoIosNotifications className="nav-icon" />
             </div>
             <div>
@@ -214,7 +213,7 @@ const Navbar = () => {
               <div>
                 <BiMessageDetail className="nav-icon" />
               </div>
-              <div>
+              <div onClick={() => navigate("/notification")}>
                 <IoIosNotifications className="nav-icon" />
               </div>
               <div>
