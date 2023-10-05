@@ -25,6 +25,7 @@ import { BiSolidMoon } from "react-icons/bi"
 import { BiMessageDetail } from "react-icons/bi"
 import { IoIosNotifications } from "react-icons/io"
 import { BiSolidHelpCircle } from "react-icons/bi"
+import { HiOutlineLogout } from "react-icons/hi"
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -39,6 +40,8 @@ const Navbar = () => {
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
   const background = theme.palette.background.default;
+  const { palette } = useTheme();
+  const isDarkTheme = palette.mode === 'dark';
   const alt = theme.palette.background.alt;
 
   const fullName = `${user.firstName} ${user.lastName}`;
@@ -152,15 +155,8 @@ const Navbar = () => {
       )}
 
       {!isNonMobileScreens && isMobileMenuToggled && (
-        <Box
-          position="fixed"
-          right="0"
-          bottom="0"
-          height="100%"
-          zIndex="10"
-          maxWidth="500px"
-          minWidth="300px"
-          backgroundColor={background}
+        <div        
+          className={`nav-icons-div ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}
         >
           <Box display="flex" justifyContent="flex-end" p="1rem">
             <IconButton
@@ -177,6 +173,9 @@ const Navbar = () => {
             alignItems="center"
             gap="3rem"
           >
+            <div>
+              <AiOutlineSearch className="nav-icon" />
+            </div>
             <div onClick={() => dispatch(setMode())}>
               {theme.palette.mode === "light" ? (
                 <BsFillSunFill className="nav-icon" />
@@ -193,34 +192,11 @@ const Navbar = () => {
             <div>
               <BiSolidHelpCircle className="nav-icon" />
             </div>
-            <FormControl variant="standard" value={fullName}>
-              <Select
-                value={fullName}
-                sx={{
-                  backgroundColor: neutralLight,
-                  width: "150px",
-                  borderRadius: "0.25rem",
-                  p: "0.25rem 1rem",
-                  "& .MuiSvgIcon-root": {
-                    pr: "0.25rem",
-                    width: "3rem",
-                  },
-                  "& .MuiSelect-select:focus": {
-                    backgroundColor: neutralLight,
-                  },
-                }}
-                input={<InputBase />}
-              >
-                <MenuItem value={fullName}>
-                  <Typography>{fullName}</Typography>
-                </MenuItem>
-                <MenuItem onClick={() => dispatch(setLogout())}>
-                  Log Out
-                </MenuItem>
-              </Select>
-            </FormControl>
+            <div onClick={() => dispatch(setLogout())}>
+              <HiOutlineLogout className="nav-icon" />
+            </div>
           </FlexBetween>
-        </Box>
+        </div>
       )}
     </FlexBetween>
   );
