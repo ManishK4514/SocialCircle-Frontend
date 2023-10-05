@@ -129,12 +129,12 @@ svg.nav-icon:hover {
 }
 
 .social-logo {
-    width: 30px;
+    width: 40px;
     stroke: black;
     border-radius: 50%;
 }
 
 .social-logo-div {
-    margin-right: 8px;
+    margin-right: 1rem;
     padding-top: 4px;
 }

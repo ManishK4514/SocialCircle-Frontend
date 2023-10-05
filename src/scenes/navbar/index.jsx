@@ -27,6 +27,7 @@ import { IoIosNotifications } from "react-icons/io"
 import { BiSolidHelpCircle } from "react-icons/bi"
 import { HiOutlineLogout } from "react-icons/hi"
 import { AiFillHome } from "react-icons/ai"
+import { FiMenu } from "react-icons/fi"
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -151,13 +152,14 @@ const Navbar = () => {
       {!isNonMobileScreens && (
         <>
           <div className="social-logo-div" onClick={() => navigate("/home")}>
-          <img src="https://i.ibb.co/1r71bM7/Untitled-design-4.jpg" alt="logo" className="social-logo" />
+            <img src="https://i.ibb.co/1r71bM7/Untitled-design-4.jpg" alt="logo" className="social-logo" />
           </div>
           <FlexBetween
             backgroundColor={neutralLight}
             borderRadius="9px"
             gap="3rem"
             padding="0.1rem 1.5rem"
+            marginRight="0.5rem"
           >
             <input
               type="text"
@@ -173,14 +175,14 @@ const Navbar = () => {
           </FlexBetween>
 
           <IconButton onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}>
-            <Menu />
+            <FiMenu className="nav-icon" />
           </IconButton>
         </>
       )}
 
 
       {!isNonMobileScreens && isMobileMenuToggled && (
-        <>          
+        <>
           <div
             className={`nav-icons-div ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}
           >
