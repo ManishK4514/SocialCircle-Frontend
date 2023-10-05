@@ -15,6 +15,7 @@ const ProfilePage = () => {
   const token = useSelector((state) => state.token);
   const { _id, picturePath } = useSelector((state) => state.user);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
+  const loggedInUserId = useSelector((state) => state.user._id);
   const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
 
   const getUser = async () => {
@@ -36,7 +37,7 @@ const ProfilePage = () => {
     <div>
       <Navbar />
       <div
-        className="profile-container"        
+        className="profile-container"
         style={{
           display: isNonMobileScreens ? "flex" : "block"
         }}
@@ -52,8 +53,12 @@ const ProfilePage = () => {
             marginTop: isNonMobileScreens ? undefined : "2rem",
           }}
         >
-          <MyPostWidget picturePath={user.picturePath} />
-          <div style={{ margin: "2rem 0" }} />
+          {loggedInUserId === userId && (
+            <div>
+              <MyPostWidget picturePath={user.picturePath} />
+              <div style={{ margin: "2rem 0" }} />
+            </div>
+          )}
           <PostsWidget userId={userId} loggedUserId={_id} userProfilePicture={picturePath} isProfile />
         </div>
       </div>

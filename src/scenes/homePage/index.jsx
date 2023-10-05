@@ -31,6 +31,7 @@ const HomePage = () => {
           }}
         >
           <MyPostWidget picturePath={picturePath} />
+          <div style={{ margin: "2rem 0" }} />
           <PostsWidget loggedUserId={_id} userProfilePicture={picturePath} />
         </div>
         {isNonMobileScreens && (

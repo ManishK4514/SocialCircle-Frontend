@@ -31,7 +31,7 @@
     padding-top: 5px;
     gap: 5px;
     background-color: aliceblue;
-    border-radius: 0px 10px 0px 0px;
+    border-radius: 0 0.8rem 0 0;
     position: relative;
     box-sizing: border-box;
     margin-bottom: -4px;
@@ -58,7 +58,7 @@
     gap: 5px;
     padding-left: 12px;
     background-color: aliceblue;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0 0 0.8rem 0.8rem;
     position: relative;
 }
 

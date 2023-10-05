@@ -6,6 +6,7 @@ import FlexBetween from "./FlexBetween";
 import UserImage from "./UserImage";
 import { MdOutlinePersonAdd } from "react-icons/md"
 import { MdOutlinePersonRemove } from "react-icons/md"
+import { FaUserSecret } from "react-icons/fa"
 import "./UserComponents.css";
 
 const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
@@ -14,6 +15,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const { _id } = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
   const friends = useSelector((state) => state.user.friends);
+  const loggedInUserId = useSelector((state) => state.user._id);
 
   const { palette } = useTheme();
   const isDarkTheme = palette.mode === 'dark';
@@ -49,23 +51,32 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
           }}
         >
           <div className={`Friend-Name ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}>{name}</div>
-            
+
           <div className="Friend-occupation">
             {subtitle}
           </div>
         </div>
       </FlexBetween>
-      <div
-        className={`icon-btn ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}
-        onClick={() => patchFriend()}
-        sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
-      >
-        {isFriend ? (
-          <MdOutlinePersonRemove className={`icon-svg ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}/>
-        ) : (
-          <MdOutlinePersonAdd className={`icon-svg ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} />
-        )}
-      </div>
+      {loggedInUserId !== friendId ? (
+        <div
+          className={`icon-btn ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}
+          onClick={() => patchFriend()}
+          sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
+        >
+          {isFriend ? (
+            <MdOutlinePersonRemove className={`icon-svg ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} />
+          ) : (
+            <MdOutlinePersonAdd className={`icon-svg ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} />
+          )}
+        </div>
+      ) : (
+        <div
+          className={`icon-btn ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}
+          sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
+        >
+          <FaUserSecret className={`icon-svg ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} />
+        </div>
+      )}
     </FlexBetween>
   );
 };
