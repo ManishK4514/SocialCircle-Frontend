@@ -33,7 +33,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
-  const [isSearchToggled, setIsSearchToggled] = useState(true);
+  const [isSearchToggled, setIsSearchToggled] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -124,7 +124,7 @@ const Navbar = () => {
             <div onClick={() => navigate("/notification")}>
               <IoIosNotifications className="nav-icon" />
             </div>
-            <div>
+            <div onClick={() => navigate("/help")}>
               <BiSolidHelpCircle className="nav-icon" />
             </div>
             <FormControl variant="standard" value={fullName}>
@@ -256,7 +256,7 @@ const Navbar = () => {
               <div onClick={() => navigate("/notification")}>
                 <IoIosNotifications className="nav-icon" />
               </div>
-              <div>
+              <div onClick={() => navigate("/help")}>
                 <BiSolidHelpCircle className="nav-icon" />
               </div>
               <div onClick={() => dispatch(setLogout())}>
