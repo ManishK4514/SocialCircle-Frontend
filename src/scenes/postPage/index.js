@@ -8,28 +8,31 @@ import PostWidget from "scenes/widgets/PostWidget";
 import UserWidget from "scenes/widgets/UserWidget";
 
 const PostPage = () => {
-    const [user, setUser] = useState(null);    
+    const [post, setPost] = useState(null);
     const token = useSelector((state) => state.token);
-    const { _id, picturePath } = useSelector((state) => state.user);
+    const { postId } = useParams();
     const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
     const loggedInUserId = useSelector((state) => state.user._id);
     const baseUrl = process.env.REACT_APP_SOCIAL_CIRCLE_BACKEND;
-    const post = JSON.parse(localStorage.getItem("singlePost"));
 
-    const getUser = async () => {
-        const response = await fetch(`${baseUrl}/users/${post.userId}`, {
+    const getPost = async () => {
+        const response = await fetch(`${baseUrl}/posts/status/${postId}`, {
             method: "GET",
-            headers: { Authorization: `Bearer ${token}` },
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
         });
+
         const data = await response.json();
-        setUser(data);
+        setPost(data);
     };
 
     useEffect(() => {
-        getUser();
+        getPost();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-    if (!user) return null;
+    
+    if (!post) return null;
 
     return (
         <div>
@@ -44,7 +47,7 @@ const PostPage = () => {
                     <div style={{ flexBasis: "26%" }}>
                         <UserWidget
                             userId={post.userId}
-                            picturePath={user.picturePath}
+                            picturePath={post.picturePath}
                         />
                         <div style={{ margin: "2rem 0" }} />
                         <FriendListWidget userId={post.userId} />

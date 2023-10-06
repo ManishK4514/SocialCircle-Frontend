@@ -80,21 +80,7 @@ const PostWidget = ({
     });
     const posts = await response.json();
     dispatch(setPosts({ posts }));
-  };
-
-  const handleSinglePost = async () => {
-    const response = await fetch(`${baseUrl}/posts/status/${postId}`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
-
-    const post = await response.json();
-    localStorage.setItem("singlePost", JSON.stringify(post));
-    navigate(`/posts/${postId}`);
-  };
+  };  
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -128,7 +114,7 @@ const PostWidget = ({
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem", cursor: "pointer" }}
           src={picturePath}
-          onClick={handleSinglePost}
+          onClick={ () =>navigate(`/posts/${postId}`)}
         />
       )}
       <FlexBetween mt="0.25rem">
