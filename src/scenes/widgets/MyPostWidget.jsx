@@ -15,6 +15,15 @@ import { MdOutlineModeEditOutline } from "react-icons/md"
 import { MdDeleteOutline } from "react-icons/md"
 import "./MyPostWidget.css";
 
+// toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// notify-copy-link
+const notifyPost = () => {
+  toast("Posting!!!")
+}
+
 const MyPostWidget = ({ picturePath }) => {
   const dispatch = useDispatch();
   const [isImage, setIsImage] = useState(false);
@@ -164,12 +173,16 @@ const MyPostWidget = ({ picturePath }) => {
         )}
 
         <button
-          disabled={!post}
-          onClick={handlePost}
-          className={`post-btn ${!post ? 'disabled' : ''}`}
+          disabled={!post && !image}
+          onClick={() => {
+            handlePost();
+            notifyPost();
+          }}
+          className={`post-btn ${(!post && !image) ? 'disabled' : ''}`}
         >
           POST
         </button>
+
       </FlexBetween>
     </WidgetWrapper>
   );

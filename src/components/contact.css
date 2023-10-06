@@ -31,7 +31,6 @@ textarea {
     background: transparent;
     border: 2px solid var(--color-primary-variant);
     resize: none;
-    color: var(--color-white);
 }
 
 /* ************* MEDIA QUERIES (MEDIUM DEVICES) *************** */

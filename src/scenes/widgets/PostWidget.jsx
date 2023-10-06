@@ -19,6 +19,15 @@ import MyComment from "./MyComment"
 import Comment from "./Comment"
 import "./PostWidget.css"
 
+// toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// notify-copy-link
+const notifyCopyLink = () => {
+  toast("Link Copied!!!")
+}
+
 const PostWidget = ({
   postId,
   postUserId,
@@ -149,9 +158,14 @@ const PostWidget = ({
               <MdDelete className={`icon-svg ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} />
             </button>
           )}
-          <button className={`icon-btn-post ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} >
+          <button onClick={() => {
+            const link = `https://socialcircle.vercel.app/posts/${postId}`;
+            navigator.clipboard.writeText(link);
+            notifyCopyLink();
+          }} className={`icon-btn-post ${isDarkTheme ? 'dark-mode' : 'light-mode'}`}>
             <ShareOutlined className={`icon-svg ${isDarkTheme ? 'dark-mode' : 'light-mode'}`} />
           </button>
+
         </div>
       </FlexBetween>
 
@@ -200,6 +214,7 @@ const PostWidget = ({
           </div>
         </div>
       )}
+      <ToastContainer />
     </WidgetWrapper>
   );
 };
