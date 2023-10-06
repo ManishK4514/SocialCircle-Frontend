@@ -104,7 +104,7 @@ const Navbar = () => {
                   placeholder="Search..."
                 />
                 <AiOutlineSearch
-                  className="nav-icon"
+                  className="nav-icon-search"
                   onClick={handleSearch}
                 ></AiOutlineSearch>
               </FlexBetween>
@@ -118,14 +118,14 @@ const Navbar = () => {
                 <BiSolidMoon className="nav-icon" />
               )}
             </div>
-            <div>
+            <div onClick={() => navigate("/chat")}>
               <BiMessageDetail className="nav-icon" />
-            </div>
-            <div onClick={() => navigate("/notification")}>
-              <IoIosNotifications className="nav-icon" />
             </div>
             <div onClick={() => navigate("/help")}>
               <BiSolidHelpCircle className="nav-icon" />
+            </div>
+            <div onClick={() => navigate("/notification")}>
+              <IoIosNotifications className="nav-icon" />
             </div>
             <FormControl variant="standard" value={fullName}>
               <Select
@@ -203,7 +203,7 @@ const Navbar = () => {
               placeholder="Search..."
             />
             <AiOutlineSearch
-              className="nav-icon"
+              className="nav-icon-search"
               onClick={handleSearch}
             ></AiOutlineSearch>
           </FlexBetween>
@@ -250,14 +250,14 @@ const Navbar = () => {
                   <BiSolidMoon className="nav-icon" />
                 )}
               </div>
-              <div>
+              <div onClick={() => navigate("/chat")}>
                 <BiMessageDetail className="nav-icon" />
-              </div>
-              <div onClick={() => navigate("/notification")}>
-                <IoIosNotifications className="nav-icon" />
               </div>
               <div onClick={() => navigate("/help")}>
                 <BiSolidHelpCircle className="nav-icon" />
+              </div>
+              <div onClick={() => navigate("/notification")}>
+                <IoIosNotifications className="nav-icon" />
               </div>
               <div onClick={() => dispatch(setLogout())}>
                 <HiOutlineLogout className="nav-icon" />

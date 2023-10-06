@@ -72,6 +72,13 @@ svg.nav-icon {
     width: 25px;
     height: 25px;
 }
+
+svg.nav-icon-search {
+    width: 35px;
+    height: 25px;
+    cursor: pointer;
+}
+
 svg.nav-icon:hover {
     cursor: pointer;
 }
