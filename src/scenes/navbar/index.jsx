@@ -27,10 +27,13 @@ import { BiSolidHelpCircle } from "react-icons/bi"
 import { HiOutlineLogout } from "react-icons/hi"
 import { AiFillHome } from "react-icons/ai"
 import { FiMenu } from "react-icons/fi"
+import { AiOutlineClose } from "react-icons/ai"
+import { BiSearchAlt2 } from "react-icons/bi"
 import "./Navbar.css";
 
 const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
+  const [isSearchToggled, setIsSearchToggled] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -76,33 +79,37 @@ const Navbar = () => {
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
       {isNonMobileScreens && (
         <>
-          <FlexBetween gap="1.75rem">
-            <div
-              onClick={() => navigate("/home")}
-              className="Social-Name"
-            >
-              SocialCircle
+          <div className="brand-logo-img-div">
+            <div className="social-logo-div" onClick={() => navigate("/home")}>
+              <img src="https://i.ibb.co/1r71bM7/Untitled-design-4.jpg" alt="logo" className="social-logo" />
             </div>
-            <FlexBetween
-              backgroundColor={neutralLight}
-              borderRadius="9px"
-              gap="3rem"
-              padding="0.1rem 1.5rem"
-            >
-              <input
-                type="text"
-                className="search-field"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search..."
-              />
-              <AiOutlineSearch
-                className="nav-icon"
-                onClick={handleSearch}
-              ></AiOutlineSearch>
+            <FlexBetween gap="1.75rem">
+              <div
+                onClick={() => navigate("/home")}
+                className="Social-Name"
+              >
+                SocialCircle
+              </div>
+              <FlexBetween
+                backgroundColor={neutralLight}
+                borderRadius="9px"
+                gap="3rem"
+                padding="0.1rem 1.5rem"
+              >
+                <input
+                  type="text"
+                  className="search-field"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search..."
+                />
+                <AiOutlineSearch
+                  className="nav-icon"
+                  onClick={handleSearch}
+                ></AiOutlineSearch>
+              </FlexBetween>
             </FlexBetween>
-          </FlexBetween>
-
+          </div>
           <FlexBetween gap="2rem">
             <div onClick={() => dispatch(setMode())}>
               {theme.palette.mode === "light" ? (
@@ -148,11 +155,39 @@ const Navbar = () => {
         </>
       )}
 
-      {!isNonMobileScreens && (
+      {!isNonMobileScreens && !isSearchToggled && (
         <>
-          <div className="social-logo-div" onClick={() => navigate("/home")}>
-            <img src="https://i.ibb.co/1r71bM7/Untitled-design-4.jpg" alt="logo" className="social-logo" />
+          <div className="brand-logo-img-div">
+            <div className="social-logo-div" onClick={() => navigate("/home")}>
+              <img src="https://i.ibb.co/1r71bM7/Untitled-design-4.jpg" alt="logo" className="social-logo" />
+            </div>
+
+            <div
+              onClick={() => navigate("/home")}
+              className="Social-Name"
+            >
+              SocialCircle
+            </div>
           </div>
+
+          <div className="toggle-button-div">
+            <FlexBetween
+              backgroundColor={neutralLight}
+              borderRadius="9px"
+            >
+              <IconButton onClick={() => setIsSearchToggled(!isSearchToggled)}>
+                <BiSearchAlt2 className="nav-icon" />
+              </IconButton>
+            </FlexBetween>
+            <IconButton onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}>
+              <FiMenu className="nav-icon" />
+            </IconButton>
+          </div>
+        </>
+      )}
+
+      {!isNonMobileScreens && isSearchToggled && (
+        <>
           <FlexBetween
             backgroundColor={neutralLight}
             borderRadius="9px"
@@ -173,9 +208,14 @@ const Navbar = () => {
             ></AiOutlineSearch>
           </FlexBetween>
 
-          <IconButton onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}>
-            <FiMenu className="nav-icon" />
-          </IconButton>
+          <FlexBetween
+            backgroundColor={neutralLight}
+            borderRadius="9px"
+          >
+            <IconButton onClick={() => setIsSearchToggled(!isSearchToggled)}>
+              <AiOutlineClose className="nav-icon" />
+            </IconButton>
+          </FlexBetween>
         </>
       )}
 
