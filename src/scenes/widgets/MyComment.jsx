@@ -28,7 +28,7 @@ const MyComment = ({ location, postId, picturePath, commentBody, setCommentBody,
                 description: commentBody,
             };
 
-            await axios.post(`${baseUrl}/posts/:postId/create`, data, {
+            await axios.post(`${baseUrl}/comments/:postId/create`, data, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                 },
