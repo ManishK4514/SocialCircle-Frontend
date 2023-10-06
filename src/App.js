@@ -6,6 +6,7 @@ import SearchPage from "scenes/SearchPage";
 import NotificationPage from "scenes/notificationPage"
 import HelpPage from "scenes/helpPage";
 import ChatPage from "scenes/chatPage";
+import PostPage from "scenes/postPage";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -48,6 +49,10 @@ function App() {
             <Route
               path="/chat"
               element={isAuth ? <ChatPage /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/posts/:postId"
+              element={isAuth ? <PostPage /> : <Navigate to="/" />}
             />
           </Routes>
         </ThemeProvider>
