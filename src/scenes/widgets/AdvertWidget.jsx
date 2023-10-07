@@ -27,7 +27,7 @@ const AdvertWidget = () => {
         <Typography color={main}>My Portfolio</Typography>
         <Typography color={medium}>
           <a href="http://manishk4514.vercel.app" target="_blank" rel="noopener noreferrer">
-            manishk4514.netlify.app
+            manishk4514.vercel.app
           </a>
         </Typography>
       </FlexBetween>
